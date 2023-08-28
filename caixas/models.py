@@ -15,14 +15,14 @@ class CaixasHf(models.Model):
     Sangria = models.CharField(max_length=100, default=0)
     SomaTotalCaixa = models.CharField(max_length=100, default=0)
     TotalCaixa = models.CharField(max_length=100, default=0)
-    VendasPrazo = models.CharField(max_length=100, default=0)
-    Despesas = models.CharField(max_length=100, default=0)
+    VendasAPrazo = models.CharField(max_length=100, default=0)
     DataFinal = models.CharField(max_length=20)
     HoraFinal = models.CharField(max_length=20)
     Operador = models.CharField(max_length=20)
     VendasRecebidas = models.CharField(max_length=100, default=0)
     Desconto = models.CharField(max_length=100, default=0)
     EntradaDeNotas = models.CharField(max_length=100, default=0)
+    NumeroDeVendas = models.IntegerField(max_length=100, default=0)
     
     def __str__(self) -> str:
         return self.DataInicial
@@ -39,24 +39,25 @@ class CaixasSm(models.Model):
     Pix = models.CharField(max_length=100, default=0)
     CartaoCredito = models.CharField(max_length=100, default=0)
     CartaoDebito = models.CharField(max_length=100, default=0)
-    Cheque = models.CharField(max_length=100, default=0)
+    Cheque = models.CharField(max_length=100, default=0) 
     Sangria = models.CharField(max_length=100, default=0)
     SomaTotalCaixa = models.CharField(max_length=100, default=0)
     TotalCaixa = models.CharField(max_length=100, default=0)
+    VendasAPrazo = models.CharField(max_length=100, default=0)
     DataFinal = models.CharField(max_length=20)
     HoraFinal = models.CharField(max_length=20)
     Operador = models.CharField(max_length=20)
     VendasRecebidas = models.CharField(max_length=100, default=0)
     Desconto = models.CharField(max_length=100, default=0)
     EntradaDeNotas = models.CharField(max_length=100, default=0)
-    VendasAPrazo = models.CharField(max_length=100, default=0)
+    NumeroDeVendas = models.IntegerField(max_length=100, default=0)
 
     def __str__(self) -> str:
         return self.DataInicial
 
 class Sangria_Hf(models.Model):
     Codigo = models.CharField(max_length=100, default='0')
-    Codigo_caixa = models.CharField(max_length=20, default='0')
+    Operador = models.CharField(max_length=20, default='None')
     Data = models.CharField(max_length=20, default='1/1/23')
     Dinheiro = models.CharField(max_length=100, default=0)
     Cheque = models.CharField(max_length=100, default=0)
@@ -68,7 +69,7 @@ class Sangria_Hf(models.Model):
 
 class Sangria_Sm(models.Model):
     Codigo = models.CharField(max_length=100, default='0')
-    Codigo_caixa = models.CharField(max_length=20, default='0')
+    Operador = models.CharField(max_length=20, default='None')
     Data = models.CharField(max_length=20, default='1/1/23')
     Dinheiro = models.CharField(max_length=100, default=0)
     Cheque = models.CharField(max_length=100, default=0)
@@ -80,7 +81,8 @@ class Sangria_Sm(models.Model):
 
 class Entrada_de_notas_Hf(models.Model):
     Codigo = models.CharField(max_length=100, default='0')
-    DataEmissão = models.CharField(max_length=20, default='1/1/23')
+    Operador = models.CharField(max_length=200, default='User')
+    DataEmissao = models.CharField(max_length=20, default='1/1/23')
     Fornecedor = models.CharField(max_length=100)
     TotalPagar = models.CharField(max_length=100, default=0)
     TipoDeEntrada = models.CharField(max_length=100)
@@ -90,7 +92,8 @@ class Entrada_de_notas_Hf(models.Model):
 
 class Entrada_de_notas_Sm(models.Model):
     Codigo = models.CharField(max_length=100, default='0')
-    DataEmissão = models.CharField(max_length=20, default='1/1/23')
+    Operador = models.CharField(max_length=200, default='User')
+    DataEmissao = models.CharField(max_length=20, default='1/1/23')
     Fornecedor = models.CharField(max_length=100)
     TotalPagar = models.CharField(max_length=100, default=0)
     TipoDeEntrada = models.CharField(max_length=100)
